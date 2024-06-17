@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import br.com.masterclass.superpecas.exception.RecordNotFoundException;
 import br.com.masterclass.superpecas.model.Carro;
 import br.com.masterclass.superpecas.repository.CarroRepository;
 
@@ -24,10 +25,6 @@ public class CarroService {
 
     public Carro findById(@PathVariable Integer id) {
         return carroRepository.findById(id)
-        .orElseThrow(() -> new NoSuchElementException("Carro não encontrado com o id: " + id));
-        
-        //.orElseThrow(() -> new 
-        //new 
-        //RecordNotFoundException(id,"Aluno"));
+            .orElseThrow(() -> new RecordNotFoundException(id,"Carro"));
     }
 }

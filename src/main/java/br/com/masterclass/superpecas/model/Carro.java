@@ -1,5 +1,7 @@
 package br.com.masterclass.superpecas.model;
 
+import org.springframework.lang.NonNull;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,8 +26,12 @@ public class Carro {
     @Column(nullable = false, unique = true , length = 255)
     private String codigoUnico;
 
-
+    @Deprecated
     public Carro(){        
+    }
+    private Carro(@NonNull String nomeModelo, @NonNull String fabricante) {
+        setNomeModelo(nomeModelo);
+        setFabricante(fabricante);
     }
     
     public Integer getCarroID() {
