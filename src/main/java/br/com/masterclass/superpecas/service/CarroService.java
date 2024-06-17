@@ -1,7 +1,7 @@
 package br.com.masterclass.superpecas.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,5 +26,13 @@ public class CarroService {
     public Carro findById(@PathVariable Integer id) {
         return carroRepository.findById(id)
             .orElseThrow(() -> new RecordNotFoundException(id,"Carro"));
+    }
+
+    public List<String> listaTop10Fabricantes() {
+        List<Object[]> results = carroRepository.findTop10Fabricantes();
+        return results.stream()
+                      .map(result -> (String) result[0])
+                      .limit(10)
+                      .collect(Collectors.toList());
     }
 }

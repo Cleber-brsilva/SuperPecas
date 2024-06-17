@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.masterclass.superpecas.model.Carro;
@@ -21,7 +20,12 @@ public class CarroController {
         this.carroService =  carroService;
     }
 
-    @GetMapping //listar todos os registros
+    @GetMapping(value = "/")
+    public String buscaCarro() {
+        return "Para buscar todos os carros use /listaTodos";
+    }
+
+    @GetMapping(value = "/listaTodos")
     public List<Carro> list (){
         return carroService.list();
     }
@@ -29,6 +33,11 @@ public class CarroController {
     @GetMapping(value = "/{id}") //Procurar registro por id
     public Carro findById(@PathVariable Integer id) {
         return carroService.findById(id);            
+    }
+
+    @GetMapping("/top10fabricantes")
+    public List<String> getTop10Fabricantes() {
+        return carroService.listaTop10Fabricantes();
     }
 
 }
