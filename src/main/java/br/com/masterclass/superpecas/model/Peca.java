@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Peca {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pecaID;
 
     @Column(nullable = false, length = 255)

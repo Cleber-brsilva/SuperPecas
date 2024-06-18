@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class Carro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer carroID;
 
     @Column(nullable = false, length = 255)
@@ -23,41 +23,61 @@ public class Carro {
     @Column(nullable = false, length = 255)
     private String fabricante;
 
-    @Column(nullable = false, unique = true , length = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String codigoUnico;
 
-    @Deprecated
-    public Carro(){        
+    public Carro() {
     }
-    private Carro(@NonNull String nomeModelo, @NonNull String fabricante) {
-        setNomeModelo(nomeModelo);
-        setFabricante(fabricante);
+
+    public Carro(String nomeModelo, String fabricante, String codigoUnico) {
+        this.nomeModelo = nomeModelo;
+        this.fabricante = fabricante;
+        this.codigoUnico = codigoUnico;
     }
-    
+
+    // Getters and setters
     public Integer getCarroID() {
         return carroID;
     }
-    public String getCodigoUnico() {
-        return codigoUnico;
-    }
-    public String getFabricante() {
-        return fabricante;
-    }
-    public String getNomeModelo() {
-        return nomeModelo;
-    }
+
     public void setCarroID(Integer carroID) {
         this.carroID = carroID;
     }
-    public void setCodigoUnico(String codigoUnico) {
-        this.codigoUnico = codigoUnico;
+
+    public String getNomeModelo() {
+        return nomeModelo;
     }
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
-    }
+
     public void setNomeModelo(String nomeModelo) {
         this.nomeModelo = nomeModelo;
     }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public String getCodigoUnico() {
+        return codigoUnico;
+    }
+
+    public void setCodigoUnico(String codigoUnico) {
+        this.codigoUnico = codigoUnico;
+    }
+
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "carroID=" + carroID +
+                ", nomeModelo='" + nomeModelo + '\'' +
+                ", fabricante='" + fabricante + '\'' +
+                ", codigoUnico='" + codigoUnico + '\'' +
+                '}';
+    }
+
 
 }
 
