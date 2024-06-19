@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "Pecas")
@@ -18,18 +20,28 @@ public class Peca {
     private Integer pecaID;
 
     @Column(nullable = false, length = 255)
+    @NotNull
+    @Size(min = 1, max = 255)
     private String nome;
 
     @Column(nullable = false, columnDefinition = "TEXT")
+    @NotNull
+    @Size(min = 1, max = 255)
     private String descricao;
 
     @Column(nullable = false, length = 255, unique = true)
+    @NotNull
+    @Size(min = 1, max = 255)
     private String numeroSerie;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 255)  
+    @NotNull  
+    @Size(min = 1, max = 255)
     private String fabricante;
 
     @Column(nullable = false, length = 255)
+    @NotNull
+    @Size(min = 1, max = 255)
     private String modeloCarro;
 
     @ManyToOne // Assuming a "carro" field in Carro entity

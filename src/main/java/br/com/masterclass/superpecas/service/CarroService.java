@@ -91,6 +91,7 @@ public class CarroService {
         return carroRepository.save(carro);
     }
 
+    //atualizaCarro
     @Transactional
     public Carro atualizaCarro(Integer id, Carro carro) {
         // Verifica se o carro com o ID especificado existe
